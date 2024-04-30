@@ -291,7 +291,8 @@ is ``True``:
 * **system**: see :attr:`system`;
 * **building**: see :attr:`building`;
 * **request**: see :attr:`request`;
-* **implicits**: see :attr:`implicits`.
+* **implicits**: see :attr:`implicits`;
+* **ephemerals**: see :attr:`ephemerals`.
 
 The following objects are available in **all** cases:
 
