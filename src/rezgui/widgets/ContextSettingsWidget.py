@@ -71,7 +71,7 @@ class ContextSettingsWidget(QtWidgets.QWidget, ContextViewMixin):
 
         self._update_text()
 
-    def _contextChanged(self, flags: int=0) -> None:
+    def _contextChanged(self, flags: int = 0) -> None:
         if not (flags & ContextModel.CONTEXT_CHANGED):
             return
         self._update_text()
@@ -79,8 +79,8 @@ class ContextSettingsWidget(QtWidgets.QWidget, ContextViewMixin):
     def apply_changes(self) -> None:
         def _content_error(title, text) -> None:
             ret = QtWidgets.QMessageBox.warning(self, title, text,
-                                            QtWidgets.QMessageBox.Discard,
-                                            QtWidgets.QMessageBox.Cancel)
+                                                QtWidgets.QMessageBox.Discard,
+                                                QtWidgets.QMessageBox.Cancel)
             if ret == QtWidgets.QMessageBox.Discard:
                 self.discard_changes()
 

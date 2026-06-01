@@ -100,11 +100,10 @@ class VariantCellWidget(QtWidgets.QWidget, ContextViewMixin):
             self.depends_icon.setToolTip(desc % (self.variant.name, variant.name))
             self.depends_icon.setEnabled(enable)
 
-    def _contextChanged(self, flags: int=0) -> None:
+    def _contextChanged(self, flags: int = 0) -> None:
         self._set_stale(self.context_model.is_stale())
 
-        if flags & (ContextModel.PACKAGES_PATH_CHANGED |
-                    ContextModel.CONTEXT_CHANGED):
+        if flags & (ContextModel.PACKAGES_PATH_CHANGED | ContextModel.CONTEXT_CHANGED):
             # update icons
             new_icons = []
 
@@ -227,10 +226,10 @@ class VariantCellWidget(QtWidgets.QWidget, ContextViewMixin):
                                                 if not package_filter.excludes(x)
                                                 and x.timestamp <= resolve_time)
                             if not newer_package:
-                                    new_icons.append(
-                                        ("yellow_white_tick",
-                                         "package was latest possible at time of resolve"))
-                                    ticked = True
+                                new_icons.append(
+                                    ("yellow_white_tick",
+                                     "package was latest possible at time of resolve"))
+                                ticked = True
 
                     # bring in the old man
                     if not ticked:
@@ -241,8 +240,7 @@ class VariantCellWidget(QtWidgets.QWidget, ContextViewMixin):
 
             self._set_icons(new_icons)
 
-        if (not self.hide_locks) and (flags & (ContextModel.LOCKS_CHANGED |
-                                      ContextModel.CONTEXT_CHANGED)):
+        if (not self.hide_locks) and (flags & (ContextModel.LOCKS_CHANGED | ContextModel.CONTEXT_CHANGED)):
             # update lock icon
             lock = self.context_model.get_patch_lock(self.variant.name)
             if lock is None:

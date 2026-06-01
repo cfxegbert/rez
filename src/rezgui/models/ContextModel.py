@@ -176,7 +176,7 @@ class ContextModel(QtCore.QObject):
             self.patch_locks = {}
             self._changed(self.LOCKS_CHANGED)
 
-    def resolve_context(self, verbosity: int=0, max_fails=-1, timestamp=None,
+    def resolve_context(self, verbosity: int = 0, max_fails=-1, timestamp=None,
                         callback=None, buf=None, package_load_callback=None):
         """Update the current context by performing a re-resolve.
 
@@ -219,13 +219,13 @@ class ContextModel(QtCore.QObject):
         """Replace the current context with another."""
         self._set_context(context, emit=False)
         self._modified = (not context.load_path)
-        self.dataChanged.emit(self.CONTEXT_CHANGED |
-                              self.REQUEST_CHANGED |
-                              self.PACKAGES_PATH_CHANGED |
-                              self.LOCKS_CHANGED |
-                              self.LOADPATH_CHANGED |
-                              self.PACKAGE_FILTER_CHANGED |
-                              self.CACHING_CHANGED)
+        self.dataChanged.emit(self.CONTEXT_CHANGED
+                              | self.REQUEST_CHANGED
+                              | self.PACKAGES_PATH_CHANGED
+                              | self.LOCKS_CHANGED
+                              | self.LOADPATH_CHANGED
+                              | self.PACKAGE_FILTER_CHANGED
+                              | self.CACHING_CHANGED)
 
     def _set_context(self, context, emit: bool = True) -> None:
         self._context = context
@@ -240,10 +240,10 @@ class ContextModel(QtCore.QObject):
         self.default_patch_lock = context.default_patch_lock
         self.patch_locks = copy.deepcopy(context.patch_locks)
         if emit:
-            self.dataChanged.emit(self.CONTEXT_CHANGED |
-                                  self.REQUEST_CHANGED |
-                                  self.PACKAGES_PATH_CHANGED |
-                                  self.LOCKS_CHANGED)
+            self.dataChanged.emit(self.CONTEXT_CHANGED
+                                  | self.REQUEST_CHANGED
+                                  | self.PACKAGES_PATH_CHANGED
+                                  | self.LOCKS_CHANGED)
 
     def _changed(self, flags) -> None:
         self._stale = True

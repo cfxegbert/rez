@@ -100,8 +100,7 @@ class WriteGraphDialog(QtWidgets.QDialog):
         self.setWindowTitle("Rendered graph")
 
         if error_message:
-            QtWidgets.QMessageBox.critical(self, "Failed rendering resolve graph",
-                                       error_message)
+            QtWidgets.QMessageBox.critical(self, "Failed rendering resolve graph", error_message)
         elif filepath:
             self.success = True
         self.close()
